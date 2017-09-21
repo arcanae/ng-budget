@@ -1,7 +1,29 @@
 .red {
-    background-color: rgba(255, 0, 0, 0.6)
+    background-color: rgba(255, 0, 0, 0.3)
 }
 
-.red {
-    background-color: rgba(0, 255, 0, 0.6)
+.green {
+    background-color: rgba(0, 255, 0, 0.3)
+}
+
+table {
+    margin: auto;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+table td,
+table th {
+    border: 1px solid black;
+    box-sizing: border-box;
+    width: 120px;
+    text-align: center;
+}
+
+button {
+    margin-left: 3px;
+}
+
+#amount {
+    text-align: end;
 }

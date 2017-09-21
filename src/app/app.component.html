@@ -1,10 +1,30 @@
-<h1 style="text-align:center;">Outgoings</h1>
-<h3>New entry :</h3>
-<input type="date" [(ngModel)]="date" name="date" placeholder="24/12/2015">
+<h1 style="text-align:center;">Relevés</h1>
+<h3>Nouvelle entrée :</h3>
+<input type="date" [(ngModel)]="date" name="date" placeholder="24/12/2015" required>
 <input type="text" [(ngModel)]="desc" name="desc" placeholder="Ballon">
 <input type="number" [(ngModel)]="amount" name="amount" placeholder="-10">
-<input type="text" [(ngModel)]="type" name="type" placeholder="Loisirs">
+<select [(ngModel)]="type" name="type">
+    <option value="Revenus professionnels">Revenus professionnels</option>
+    <option value="Famille">Famille</option>
+    <option value="Revenus de placement">Revenus de placement</option>
+    <option value="Autre Revenus">Autre Revenus</option>
+    <option value="Alimentation" selected>Alimentation</option> 
+    <option value="Vie quotidienne">Vie quotidienne</option>
+    <option value="Enfant et Scolarité">Enfant et Scolarité</option>
+    <option value="Santé">Santé</option>
+    <option value="Logement/Maison">Logement/Maison</option>
+    <option value="Véhicule">Véhicule</option>
+    <option value="Numérique">Numérique</option>
+    <option value="Loisir">Loisir</option>
+    <option value="Vacances/weekend">Vacances/weekend</option>
+    <option value="Animaux">Animaux</option>
+    <option value="Impôts/Taxes">Impôts/Taxes</option>
+    <option value="Autre dépenses">Autre dépenses</option>
+  </select>
 <input type="submit" (click)="submit()" value="Submit">
+
+<br>
+<br>
 <table>
     <thead>
         <tr>
@@ -15,11 +35,13 @@
         </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let transfer of myArray">
-            <td>{{transfer.date}}</td>
-            <td>{{transfer.desc}}</td>
-            <td>{{transfer.amount}}</td>
-            <td>{{transfer.type}}</td>
+        <tr *ngFor="let transfer of myArray; index as key">
+            <td [ngClass]="getCSSClasses(transfer.amount)">{{transfer.date}}</td>
+            <td [ngClass]="getCSSClasses(transfer.amount)">{{transfer.desc}}</td>
+            <td [ngClass]="getCSSClasses(transfer.amount)" id="amount">{{transfer.amount}}€</td>
+            <td [ngClass]="getCSSClasses(transfer.amount)">{{transfer.type}}</td>
+            <button>Edit</button>
+            <button (click)="rm(key)">X</button>
         </tr>
     </tbody>
 </table>
